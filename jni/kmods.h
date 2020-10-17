@@ -17,17 +17,19 @@
 #include <getopt.h>
 
 #include "Log.h"
-#include "Offsets.h"
 #include "Process.h"
 #include "Mem.h"
 
 #if defined(__LP64__)
+#include "Offsets64.h"
 #include "ELF64/fix.h"
 #else
+#include "Offsets.h"
 #include "ELF/ElfReader.h"
 #include "ELF/ElfRebuilder.h"
 #endif
 
+string pkg("com.tencent.ig");
 static const char* lib_name = "libUE4.so";
 
 bool isStartWith(string str, const char* check) {
